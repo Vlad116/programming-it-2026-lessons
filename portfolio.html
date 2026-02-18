@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Мое портфолио</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header>
-        <h1>Мое портфолио</h1>
-        <p>Это страница с моим портфолио</p>
+    <header class="header">
+        <h1 class="header_title">Мое портфолио</h1>
+        <p class="header_description">Это страница с моим портфолио</p>
     </header>
 
     <main>
-        <section>
-            <img src="https://avatars.githubusercontent.com/u/32329117?v=4&size=64" alt="Фото Алексеев Владислав">
-            <h2>О себе</h2>
+        <section class="main-info">
+            <img class="profile-photo" src="https://avatars.githubusercontent.com/u/32329117?v=4&size=256" alt="Фото Алексеев Владислав">
+            <h2 class="section-header">О себе</h2>
             <p>Меня зовут Владислав, я <b>frontend-разработчик</b>, мои контакты можете посмотреть <a href="#my-contacts">тут</a>.</p>
             <p>В <u>свободное</u> время читаю <i>техническую</i> литературу</p>
             <p>Моя любимая цитата: <em><mark>То, что мы не оправдали ваши ожидания — это не наши проблемы. Это ваши проблемы.</mark> - <small>Аршавин</small></em></p>
         </section>
 
-        <section>
-            <h2>Навыки:</h2>
+        <section class="skills">
+            <h2 class="section-header">Навыки:</h2>
             
             <ol>
                 <li><strong>HTML5</strong> — семантическая разметка</li>
@@ -35,8 +36,8 @@
                 <dd>семантическая разметка</dd>
             </dl>
         </section>
-        <section>
-            <h3>Мои хобби:</h3>
+        <section class="hobbies">
+            <h3 class="section-header">Мои хобби:</h3>
             <ul>
                 <li>Горные лыжи</li>
                 <li>Баскетбол</li>
@@ -44,8 +45,8 @@
                 <li>...</li>
             </ul>
         </section>
-        <section>
-            <h3>Мои проекты:</h3>
+        <section class="projects">
+            <h3 class="section-header">Мои проекты:</h3>
             <ol>
                 <li>
                     <a href="https://github.com/Vlad116/LogistLog" target="_blank"><strong>Платформа для логистики</strong></a>
@@ -57,9 +58,9 @@
                 </li>
             </ol>
         </section>
-        <section>
+        <section class="regards">
             <table>
-                <caption><h4>Мои достижения</h4></caption>
+                <caption><h4 class="section-header">Мои достижения</h4></caption>
                 <thead>
                     <tr>
                         <th colspan="2">Название достижения</th>
@@ -80,18 +81,20 @@
         </section>
     </main>
     <footer>
-        <section id="my-contacts">
-            <h3>Контакты:</h3>
-            <ol>
-                <li>
-                    <a href="mailto:ivanov-ivan@example.com">ivanov-ivan@example.com</a>
-                </li>
-                <li>
-                    <a href="tel:+79171234323">+7 (917) 123-43-23</a>
-                </li>
-            </ol>
+        <section id="my-contacts" class="contacts">
+            <h3 class="section-header">Контакты:</h3>
+            <div class="section-content">
+                <ol>
+                    <li>
+                        <a href="mailto:ivanov-ivan@example.com">ivanov-ivan@example.com</a>
+                    </li>
+                    <li>
+                        <a href="tel:+79171234323">+7 (917) 123-43-23</a>
+                    </li>
+                </ol>
+                <p>&copy; 2026 Владислав Алексеев. Все права защищены.</p>
+            </div>
         </section>
-        <p>&copy; 2026 Владислав Алексеев. Все права защищены.</p>
     </footer>
 </body>
 </html>

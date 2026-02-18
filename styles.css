@@ -1,0 +1,49 @@
+body {
+    background-color: rgb(190, 219, 234);
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+a {
+    color:rgb(68, 68, 206);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    margin-block: 16px;
+}
+
+.header .header_title, .header .header_description {
+    margin-block: 8px;
+}
+
+.header .header_title {
+    font-size: 28px;
+}
+
+.section-header {
+    color: rgb(119, 116, 116);
+    border-bottom: 1px solid rgb(45, 45, 45);
+    text-align: center;
+    padding-block: 8px;
+}
+
+.main-info img.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #484848;
+}
+
+.contacts > .section-content {
+    width: 500px;
+    margin: 0 0 0 auto;  
+}
