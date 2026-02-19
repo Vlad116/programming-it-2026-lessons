@@ -1,15 +1,35 @@
+@font-face {
+    font-family: 'RobotoMono-Regular', sans-serif;
+    src: url('./fonts/RobotoMono-Regular.ttf');
+    font-weight: 400;
+}
+
 body {
     background-color: rgb(190, 219, 234);
 }
 
 main {
-    max-width: 900px;
-    margin: 0 auto;
+    /* max-width: 900px; */
+    /* margin: 0 auto; */
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+main section {
+    width: 900px;
+}
+
+.main-info {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
 }
 
 a {
-    color:rgb(68, 68, 206);
+    color:rgb(68, 68, 206, 0.9);
     text-decoration: none;
 }
 
@@ -17,8 +37,17 @@ a:hover {
     text-decoration: underline;
 }
 
+p {
+    font-family: 'RobotoMono-Regular', sans-serif;
+    font-weight: 400;
+}
+
 .header {
     margin-block: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 16px;
 }
 
 .header .header_title, .header .header_description {
@@ -46,4 +75,25 @@ a:hover {
 .contacts > .section-content {
     width: 500px;
     margin: 0 0 0 auto;  
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.markedText {
+    background-color: yellow;
+}
+
+.contactLink {
+    display: inline-block;
+    padding-inline: 16px;
 }

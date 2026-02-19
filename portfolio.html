@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Мое портфолио</title>
+    <link rel="preconnect" href="./fonts/RobotoMono-Regular.ttf" />
+    <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <header class="header">
-        <h1 class="header_title">Мое портфолио</h1>
-        <p class="header_description">Это страница с моим портфолио</p>
+        <div class="header_body">
+            <h1 class="header_title">Мое портфолио</h1>
+            <p class="header_description">Это страница с моим портфолио</p>
+        </div>
     </header>
 
     <main>
         <section class="main-info">
             <img class="profile-photo" src="https://avatars.githubusercontent.com/u/32329117?v=4&size=256" alt="Фото Алексеев Владислав">
-            <h2 class="section-header">О себе</h2>
-            <p>Меня зовут Владислав, я <b>frontend-разработчик</b>, мои контакты можете посмотреть <a href="#my-contacts">тут</a>.</p>
-            <p>В <u>свободное</u> время читаю <i>техническую</i> литературу</p>
-            <p>Моя любимая цитата: <em><mark>То, что мы не оправдали ваши ожидания — это не наши проблемы. Это ваши проблемы.</mark> - <small>Аршавин</small></em></p>
+            <div class="main-info_description">
+                <h2 class="section-header">О себе</h2>
+                <p>Меня зовут Владислав, я <span class="bold">frontend-разработчик</span>, мои контакты можете посмотреть <a class="contactLink" href="#my-contacts">тут</a>.</p>
+                <p>В <span class="underline bold">свободное</span> время читаю <span class="italic">техническую</span> литературу</p>
+                <p>Моя любимая цитата: <em><span class="markedText">То, что мы не оправдали ваши ожидания — это не наши проблемы. Это ваши проблемы.</span> - <small>Аршавин</small></em></p>
+            </div>
         </section>
 
         <section class="skills">
