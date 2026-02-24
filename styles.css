@@ -9,23 +9,19 @@ body {
 }
 
 main {
-    /* max-width: 900px; */
-    /* margin: 0 auto; */
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-}
-
-main section {
-    width: 900px;
+    width: 80%;
+    margin: 48px auto;
 }
 
 .main-info {
     display: flex;
     align-items: start;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 48px;
 }
 
 a {
@@ -43,11 +39,17 @@ p {
 }
 
 .header {
-    margin-block: 16px;
+    padding-block: 16px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-right: 16px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color:aliceblue;
 }
 
 .header .header_title, .header .header_description {
@@ -63,6 +65,22 @@ p {
     border-bottom: 1px solid rgb(45, 45, 45);
     text-align: center;
     padding-block: 8px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: fit-content;
+}
+
+.avatar-wrapper::after {
+    content: '☺';
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    background-color:aliceblue;
+    color:coral;
+    font-size: 16px;
+    border-radius: 50%;
 }
 
 .main-info img.profile-photo {
@@ -96,4 +114,68 @@ p {
 .contactLink {
     display: inline-block;
     padding-inline: 16px;
+}
+
+.navigation {
+    width: 100%;
+}
+
+.navigation_menu {
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+    padding-inline: 16px;
+    width: 100%;
+}
+
+.navigation_item {
+    padding-bottom: 8px;
+    border-bottom: #484848
+}
+
+.navigation_link {
+
+}
+
+.header_body {
+    display: none;
+}
+
+.main-info_description {
+    width: 600px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    row-gap: 48px;
+    column-gap: 32px;
+}
+
+.grid-card {
+    border: 1px solid #7a7979;
+    padding: 16px;
+    border-radius: 8px;
+    background-color:aliceblue;
+}
+
+.main-info {
+    grid-column: 1 / 4;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    place-items: stretch;
+    padding-block: 16px;
+}
+
+.skills-list_item {
+    background-color:aquamarine;
+    color: darkblue;
+    padding-block: 4px;
+    padding-inline: 6px;
+    border-radius: 8px;
+    text-align: center;
 }
