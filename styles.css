@@ -19,9 +19,17 @@ main {
 
 .main-info {
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: start;
+    flex-direction: column;
     gap: 48px;
+}
+
+@media (min-width: 768px) {
+    .main-info {
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }
 
 a {
@@ -130,7 +138,21 @@ p {
 
 .navigation_item {
     padding-bottom: 8px;
-    border-bottom: #484848
+    border-bottom: #484848;
+    /* flex-basis: 150px;
+    flex-grow: 1;
+    flex-shrink: 1; */
+    flex: 1 1 150px; /* shorthand for flex-grow, flex-shrink, flex-basis */
+}
+
+.navigation_item:first-child {
+    flex-grow: 2;
+    flex-shrink: 2;
+}
+
+.navigation_item:last-child {
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .navigation_link {
@@ -159,10 +181,6 @@ p {
     padding: 16px;
     border-radius: 8px;
     background-color:aliceblue;
-}
-
-.main-info {
-    
 }
 
 .skills-list {
