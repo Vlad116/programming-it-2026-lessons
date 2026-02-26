@@ -13,7 +13,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 800px;
     margin: 48px auto;
 }
 
@@ -142,7 +142,7 @@ p {
 }
 
 .main-info_description {
-    width: 600px;
+    width: 60%;
 }
 
 .grid-container {
@@ -150,6 +150,8 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     row-gap: 48px;
     column-gap: 32px;
+    width: 100%;
+    margin-top: 40px;
 }
 
 .grid-card {
@@ -160,7 +162,7 @@ p {
 }
 
 .main-info {
-    grid-column: 1 / 4;
+    
 }
 
 .skills-list {
@@ -178,4 +180,18 @@ p {
     padding-inline: 6px;
     border-radius: 8px;
     text-align: center;
+}
+
+.contacts .section-content {
+    margin-block: 16px;
+}
+
+.contacts .section-content li {
+    padding-bottom: 8px;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
