@@ -13,7 +13,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 800px;
+    width: 90%;
     margin: 48px auto;
 }
 
@@ -25,19 +25,14 @@ main {
     gap: 48px;
 }
 
-@media (min-width: 768px) {
-    .main-info {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-}
-
 a {
     color:rgb(68, 68, 206, 0.9);
+    transition:  color 1s ease-in-out;
     text-decoration: none;
 }
 
 a:hover {
+    color:rgba(121, 15, 115, 0.9);
     text-decoration: underline;
 }
 
@@ -138,12 +133,38 @@ p {
 
 .navigation_item {
     padding-bottom: 8px;
-    border-bottom: #484848;
+    /* border-bottom: 1px solid #484848; */
     /* flex-basis: 150px;
     flex-grow: 1;
     flex-shrink: 1; */
     flex: 1 1 150px; /* shorthand for flex-grow, flex-shrink, flex-basis */
+    /* transition: border-color 2s ease; */
 }
+
+.navigation_item a {
+    position: relative;
+    padding: 4px 0;
+}
+
+.navigation_item a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color:#484848;
+    transition: width 0.5s ease;
+}
+
+.navigation_item a:hover::after {
+    width: 100%;
+}
+
+/* .navigation_item:hover {
+    border-bottom: #7a7979;
+    transform:  translateY(-2px);
+} */
 
 .navigation_item:first-child {
     flex-grow: 2;
@@ -169,7 +190,7 @@ p {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     row-gap: 48px;
     column-gap: 32px;
     width: 100%;
@@ -181,6 +202,13 @@ p {
     padding: 16px;
     border-radius: 8px;
     background-color:aliceblue;
+    /* transition:  box-shadow 1.5 ease, transform 1 ease; */
+    animation: fade-in 1.5s ease-in-out forwards;
+}
+
+.grid-card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    /* transform: scale(1.1); */
 }
 
 .skills-list {
@@ -209,7 +237,117 @@ p {
 }
 
 .footer {
-    position: absolute;
+    position: relative;
     width: 100%;
-    bottom: 0;
+    /* bottom: 0; */
+}
+
+@media screen and (min-width: 768px) {
+    .main-info {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1440px) {
+
+}
+
+@media  (orientation: landscape) {
+        .grid-container {
+            grid-template-columns:  repeat(3, 1fr);
+        }
+}
+
+@media  (orientation: portrait) {
+        .grid-container {
+            grid-template-columns:  1fr;
+        }
+}
+
+@media print {
+    .header {
+        display: none;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        box-shadow: none;
+    }
+    to {
+        opacity: 1;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        box-shadow: none;
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+}
+
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #eee;
+  }
+} */
+
+/* 
+
+Desktop first вариант идем от большего разрешения (1440) к меньшему (425)
+
+.main-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: start;
+    gap: 48px;
+}
+
+@media screen and (max-width: 425px) {
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .main-info {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+} */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.0001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.0001ms !important;
+    }
 }
