@@ -179,3 +179,50 @@ p {
     border-radius: 8px;
     text-align: center;
 }
+
+section.contacts-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / 4;
+}
+
+form.contact-form {
+    width: 60%;
+}
+
+fieldset.contact-form_fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-block: 12px;
+    width: 100%;
+}
+
+.field label {
+    padding-bottom: 8px;
+}
+
+.field label, .field input, .field textarea {
+    width: 100%;
+}
+
+.field input:invalid, .field textarea:invalid {
+    border: 2px solid rgb(231, 94, 94);
+}
+
+.field input:invalid[pattern] {
+    border: 2px solid rgb(158, 2, 2);
+}
+
+.field input:valid, .field textarea:valid {
+    border: 2px solid rgb(100, 222, 108);
+}
+

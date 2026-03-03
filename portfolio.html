@@ -6,6 +6,59 @@
     <link rel="preconnect" href="./fonts/RobotoMono-Regular.ttf" />
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./styles.css">
+    <script>
+        const PI = 3.14;
+        var name = 'Vasya';
+        let age = 16;
+        let isAdmin = true;
+        let skills = ["CSS3", "Flexbox", "Grid", "JavaScript", "Git"];
+        const key = Symbol("unique_key");
+        let hobbies = undefined;
+        let score = null;
+
+        if(age >= 18) {
+            console.log("Добро пожаловать");
+        } else if (isAdmin) {
+            console.log('Вы админ, не проходите проверку возраста');
+        } else {
+            console.error("Вам нет 18");
+        }
+
+        if(isAdmin) {
+            console.log("Вам доступен полный функционал");
+        }
+        
+        // let status;
+        
+        // if(isAdmin || age >= 18) {
+        //     status = "accepted"
+        // } else {
+        //     status = "blocked"
+        // }
+
+        let status = isAdmin || age >= 18 ? "accepted" : "blocked";
+        console.log(status);
+
+        // let i = 0;
+        // while (i < skills.length) {
+        //     console.log(`Индекс массива skills: ${i}, значение: ${skills[i]}`);
+        //     i += 1; // i = i + 1;
+        // }
+
+        // while (status === "blocked") {
+        //     // условие
+        // }
+
+        // Вначале выполняется блок кода, потом проверяется условие
+        // do {
+
+        // } while (status === "blocked");
+
+        for (i = 0; i < skills.length; i += 1) {
+            console.log(`Индекс массива skills: ${i}, значение: ${skills[i]}`);
+        }
+
+    </script>
 </head>
 <body>
     <header class="header">
@@ -96,6 +149,31 @@
                     <li><strong>Git</strong> — контроль версий</li>
                     <li>Работа в команде</li>
                 </ol> -->
+        </section>
+        <section class="contacts-form">
+            <h2 class="section-header">Связаться со мной</h2>
+            <form id="contact-form" class="contact-form">
+                <fieldset class="contact-form_fieldset">
+                    <div class="field">
+                        <label for="name">Как к вам обращаться?</label>
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" autocomplete="name" minlength="3" required>
+                    </div>
+                    <div class="field">
+                        <label for="name">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="example@mail.com" 
+                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Телефон:</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="">
+                    </div>
+                    <div class="field">
+                        <label for="message">Сообщение:</label>
+                        <textarea type="text" id="message" name="message" rows="6" placeholder="" minlength="50" required ></textarea>
+                    </div>
+                    <button type="submit">Отправить</button>
+                </fieldset>
+            </form>
         </section>
     </main>
     <footer>
