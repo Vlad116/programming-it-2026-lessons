@@ -51,14 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Вариант с использованием существующего элемента "контейнера" на странице для отображения сообщения пользователю
     if (!isValid) {
       formValidateResult.classList.add("errorText", "show");
-      formValidateResult.classList.remove("hidden");
       formValidateResult.textContent =
         "При обработке формы произошла ошибка ❌!";
 
       setTimeout(() => {
-        formValidateResult.textContent = "";
-        formValidateResult.classList.toggle("hidden");
-      }, 5000);
+        formValidateResult.classList.remove("show");
+        setTimeout(() => {
+          formValidateResult.classList.remove("errorText");
+          formValidateResult.textContent = "";
+        }, 400);
+      }, 3000);
+
       return;
     }
 
@@ -69,8 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       formValidateResult.classList.remove("errorText");
     }
 
-    if (formValidateResult.classList.contains("hidden")) {
-      formValidateResult.classList.toggle("hidden");
+    if (!formValidateResult.classList.contains("show")) {
       formValidateResult.classList.toggle("show");
     }
 
