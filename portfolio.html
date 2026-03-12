@@ -6,112 +6,7 @@
     <link rel="preconnect" href="./fonts/RobotoMono-Regular.ttf" />
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./styles.css">
-    <script>
-        // const PI = 3.14;
-        // var name = 'Vasya';
-        // let age = 16;
-        // let isAdmin = true;
-        // let skills = ["CSS3", "Flexbox", "Grid", "JavaScript", "Git"];
-        // const key = Symbol("unique_key");
-        // let hobbies = undefined;
-        // let score = null;
-
-        // if(age >= 18) {
-        //     console.log("Добро пожаловать");
-        // } else if (isAdmin) {
-        //     console.log('Вы админ, не проходите проверку возраста');
-        // } else {
-        //     console.error("Вам нет 18");
-        // }
-
-        // if(isAdmin) {
-        //     console.log("Вам доступен полный функционал");
-        // }
-        
-        // // let status;
-        
-        // // if(isAdmin || age >= 18) {
-        // //     status = "accepted"
-        // // } else {
-        // //     status = "blocked"
-        // // }
-
-        // let status = isAdmin || age >= 18 ? "accepted" : "blocked";
-        // console.log(status);
-
-        // // let i = 0;
-        // // while (i < skills.length) {
-        // //     console.log(`Индекс массива skills: ${i}, значение: ${skills[i]}`);
-        // //     i += 1; // i = i + 1;
-        // // }
-
-        // // while (status === "blocked") {
-        // //     // условие
-        // // }
-
-        // // Вначале выполняется блок кода, потом проверяется условие
-        // // do {
-
-        // // } while (status === "blocked");
-
-        // for (i = 0; i < skills.length; i += 1) {
-        //     console.log(`Индекс массива skills: ${i}, значение: ${skills[i]}`);
-        // }
-
-        // Приведение типов
-
-    //    let inputStr = "42";
-    //    let number = Number(inputStr); 
-
-    //    console.log(number + 10);
-       
-    //    let boolFromStr = Boolean(inputStr);
-    //    let emptyStr = Boolean("");
-
-    //    console.log(boolFromStr);
-    //    console.log(emptyStr);
-
-    //    console.log(String(42));
-    //    console.log(typeof String(42));
-
-    //    console.log(inputStr + 10);
-    //    console.log(inputStr - 2);
-    //    console.log(inputStr * 2);
-
-    //    console.log("Hello world!" * 3);
-    //    console.log(typeof NaN);
-
-    // //    inputStr = "abc"
-    //    if(Number.isNaN(inputStr) === false) {
-    //        console.log("Это число");
-    //        console.log(inputStr * 2);
-    //    } else {
-    //        console.log("Это не число!");
-    //    }
-
-    //    // Оператор сравнения
-    //    console.log("5" == 5); // с приведением типов
-    //    console.log("5" === 5); // без приведения типов (предпочтительно)
-
-    //    console.log(null == undefined); // true
-    //    console.log(null === undefined); // false (разные типы)
-    //    console.log(null + 5); // 5;
-    //    console.log(undefined + 5); // NaN
-    //    console.log(Boolean(null));
-    //    console.log(Boolean(undefined));
-       
-    //    let value = prompt("Ввод пользователя:");
-
-    //    if(value == null) {
-    //     console.log("Просто пустое значение возможно undefined!")
-    //    }
-
-    //    if(value === null) {
-    //     console.log("Точно null значение, пользователь не ввел данные!")
-    //    }
-
-    //    console.log(value ?? "default");
-    </script>
+    <script src="sendForm.js"></script>
 </head>
 <body>
     <header class="header">
@@ -209,7 +104,7 @@
                 <fieldset class="contact-form_fieldset">
                     <div class="field">
                         <label for="name">Как к вам обращаться?</label>
-                        <input type="text" id="name" name="name" placeholder="Ваше имя" autocomplete="name" minlength="3" required>
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" autocomplete="name" required>
                     </div>
                     <div class="field">
                         <label for="name">Email:</label>
@@ -222,10 +117,11 @@
                     </div>
                     <div class="field">
                         <label for="message">Сообщение:</label>
-                        <textarea type="text" id="message" name="message" rows="6" placeholder="" minlength="50" required ></textarea>
+                        <textarea type="text" id="message" name="message" rows="6" placeholder="" required ></textarea>
                     </div>
                     <button type="submit">Отправить</button>
                 </fieldset>
+                <div class="contact-form_sending-result hidden"></div>
             </form>
         </section>
     </main>
@@ -245,6 +141,6 @@
             </div>
         </section>
     </footer>
-    <script src="./tasksManager.js"></script>
+    <!-- <script src="./tasksManager.js"></script> -->
 </body>
 </html>

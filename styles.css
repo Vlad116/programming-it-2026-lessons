@@ -226,3 +226,24 @@ fieldset.contact-form_fieldset {
     border: 2px solid rgb(100, 222, 108);
 }
 
+.contact-form_sending-result {
+    margin-top: 16px;
+    font-size: 14px;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.successText {
+    color: greenyellow;
+}
+
+.errorText {
+    color: rgb(163, 34, 34)
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
