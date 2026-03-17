@@ -90,13 +90,16 @@
                     <div class="skills-list_item">JavaScript</div>
                     <div class="skills-list_item">Git</div>         
                 </div>
-                <!-- <ol>
-                    <li><strong>HTML5</strong> — семантическая разметка</li>
-                    <li><strong>CSS3</strong> — стилизация и анимации</li>
-                    <li><strong>JavaScript</strong> — базовые знания</li>
-                    <li><strong>Git</strong> — контроль версий</li>
-                    <li>Работа в команде</li>
-                </ol> -->
+        </section>
+        <section class="gallery-section">
+            <h2 class="section-header">Галерея</h2>
+            <div class="gallery" id="gallery">
+                <!-- Сами карточки буду генерироваться в js -->
+            </div>
+            <div class="stats">
+                Лайков всего: <span id="likes-counter">0</span>
+            </div>
+            <button id="add-card" class="add-btn">➕ Добавить новую карточку</button>
         </section>
         <section class="contacts-form">
             <h2 class="section-header">Связаться со мной</h2>
@@ -141,6 +144,7 @@
             </div>
         </section>
     </footer>
+    <script src="gallery.js"></script>
     <!-- <script src="./tasksManager.js"></script> -->
 </body>
 </html>

@@ -65,6 +65,8 @@ p {
     border-bottom: 1px solid rgb(45, 45, 45);
     text-align: center;
     padding-block: 8px;
+    font-size: 20px;
+    margin-bottom: 8px;
 }
 
 .avatar-wrapper {
@@ -246,4 +248,67 @@ fieldset.contact-form_fieldset {
     opacity: 1;
     visibility: visible;
     transition-delay: 0s;
+}
+
+.gallery-section {
+    grid-column: 1 / 4;
+}
+
+.stats { 
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    color: #e74c3c; 
+    margin-top: 16px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 16px auto;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.card:hover { transform: scale(1.03); }
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.info h3 { margin: 0; font-size: 1.1rem; }
+.like-btn, .delete-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.like-btn { background: #e74c3c; color: white; }
+.delete-btn { background: #95a5a6; color: white; }
+.like-btn.liked { background: #ff4757; transform: scale(1.2); }
+
+.add-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
 }
