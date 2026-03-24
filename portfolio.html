@@ -45,19 +45,6 @@
                     <li>...</li>
                 </ul>
         </section>
-        <section id="projects" class="projects grid-card">
-                <h3 class="section-header">Мои проекты:</h3>
-                <ol>
-                    <li>
-                        <a href="https://github.com/Vlad116/LogistLog" target="_blank"><strong>Платформа для логистики</strong></a>
-                        <p>Это мой учебный проект много лет назад</p>
-                    </li>
-                    <li>
-                        <a href="https://github.com/Vlad116/EQueue"><strong>Платформа для управления очередями</strong></a>
-                        <p>Это мой учебный проект много лет назад</p>
-                    </li>
-                </ol>
-        </section>
         <section class="regards grid-card">
                 <table>
                     <caption><h4 class="section-header">Мои достижения</h4></caption>
@@ -91,16 +78,24 @@
                     <div class="skills-list_item">Git</div>         
                 </div>
         </section>
-        <section class="gallery-section">
+        <section id="projects" class="projects">
+            <h3 class="section-header">Мои проекты:</h3>
+            <div class="gallery" id="projects-list">
+                <!-- Карточки проектов приходящие с "сервера" -->
+            </div>
+            <div id="loader" class="loader">Загрузка проектов...</div>
+            <!-- <button id="add-card" class="add-btn">➕ Добавить новую карточку</button> -->
+        </section>
+        <!-- <section class="gallery-section">
             <h2 class="section-header">Галерея</h2>
             <div class="gallery" id="gallery">
-                <!-- Сами карточки буду генерироваться в js -->
+                Сами карточки буду генерироваться в js
             </div>
             <div class="stats">
                 Лайков всего: <span id="likes-counter">0</span>
             </div>
             <button id="add-card" class="add-btn">➕ Добавить новую карточку</button>
-        </section>
+        </section> -->
         <section class="contacts-form">
             <h2 class="section-header">Связаться со мной</h2>
             <form id="contact-form" class="contact-form">
@@ -144,7 +139,9 @@
             </div>
         </section>
     </footer>
-    <script src="gallery.js"></script>
+    <script src="./fakeApi.js" type="module"></script>
+    <script src="./asyncProjectsList.js" type="module"></script>
+    <!-- <script src="gallery.js"></script> -->
     <!-- <script src="./tasksManager.js"></script> -->
 </body>
 </html>

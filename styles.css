@@ -165,7 +165,7 @@ p {
     grid-column: 1 / 4;
 }
 
-.skills-list {
+.skills-list, .project-tags-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
@@ -173,7 +173,7 @@ p {
     padding-block: 16px;
 }
 
-.skills-list_item {
+.skills-list_item, .project-tag {
     background-color:aquamarine;
     color: darkblue;
     padding-block: 4px;
@@ -311,4 +311,19 @@ fieldset.contact-form_fieldset {
     border: none;
     border-radius: 50px;
     cursor: pointer;
+}
+
+.projects {
+    grid-column: 1 / 4;
+}
+
+.loader {
+    text-align: center;
+    padding: 16px;
+    font-size: 1.2rem;
+    color: #7a7979;
+}
+
+.hidden {
+    display: none;
 }
