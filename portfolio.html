@@ -80,10 +80,13 @@
         </section>
         <section id="projects" class="projects">
             <h3 class="section-header">Мои проекты:</h3>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Поиск по проектам" class="search-input">
+            </div>
             <div class="gallery" id="projects-list">
                 <!-- Карточки проектов приходящие с "сервера" -->
             </div>
-            <div id="loader" class="loader">Загрузка проектов...</div>
+            <div id="loader" class="loader-container">Загрузка проектов <span class="loader"></span></div>
             <!-- <button id="add-card" class="add-btn">➕ Добавить новую карточку</button> -->
         </section>
         <!-- <section class="gallery-section">

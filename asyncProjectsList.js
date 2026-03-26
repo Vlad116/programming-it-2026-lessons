@@ -1,4 +1,4 @@
-import { fakeProjectsApi } from "./fakeApi.js";
+import { fakeProjectsApi, MIN_SEARCH_LENGTH } from "./fakeApi.js";
 
 // Структура объекта записи о проекте
 //   {
@@ -14,11 +14,16 @@ import { fakeProjectsApi } from "./fakeApi.js";
 
 const projectsListContainer = document.getElementById("projects-list");
 const loader = document.getElementById("loader");
+const searchInput = document.getElementById("search-input");
+
+let currentSearchQuery = "";
+let isLoading = true;
+let projects;
 
 const createProjectCard = (project) => {
   const cardContainder = document.createElement("div");
   cardContainder.className = "card";
-  //   cardContainder.addEventListener("click", showInModal);
+  cardContainder.dataset.id = project.id;
 
   const cardTitle = document.createElement("h3");
   cardTitle.innerText = project.title;
@@ -58,10 +63,22 @@ const createProjectCard = (project) => {
   projectsListContainer.appendChild(cardContainder);
 };
 
-const renderProjects = (projects) =>
+const renderProjects = (projects) => {
+  projectsListContainer.innerHTML = ""; // Очищаем список перед рендером
   projects.forEach((project) => createProjectCard(project));
+};
 
-async function init() {
+const switchLoadingState = () => {
+  if (isLoading) {
+    loader.classList.remove("hidden");
+    projectsListContainer.classList.add("hidden");
+  } else {
+    loader.classList.add("hidden");
+    projectsListContainer.classList.remove("hidden");
+  }
+};
+
+async function loadProjects(search = "") {
   // 1. Обработка промисов, await и try catch блок
   //   try {
   //     let data = await fakeProjectsApi.getProjects({});
@@ -72,22 +89,76 @@ async function init() {
   //     console.error("Ошибка async запроса:", err.message);
   //   }
 
-  let isLoading = true;
-
   // 2. Обработка результата, через цепочку промисов
-  fakeProjectsApi
-    .getProjects({})
+
+  isLoading = true;
+  switchLoadingState();
+
+  let currentData;
+
+  await fakeProjectsApi
+    .getProjects({
+      search,
+      limit: 10,
+    })
     .then((data) => {
+      currentData = [...data.projects];
       renderProjects(data.projects);
     })
     .catch((e) => {
-      console.error("Ошибка async запроса:", err.message);
+      console.error("Ошибка async запроса:", e.message);
     })
     .finally(() => {
       isLoading = false;
-      console.log(isLoading);
-      loader.classList.add("hidden");
+      switchLoadingState();
     });
+
+  return currentData;
+}
+
+const deleteCardFromDOM = async (event) => {
+  const target = event.target;
+
+  if (target.classList.contains("delete-btn")) {
+    const card = target.closest(".card");
+    const projectId = card.dataset.id;
+
+    if (card && projectId !== undefined) {
+      await fakeProjectsApi
+        .deleteProject(projectId)
+        .then(({ success, message }) => {
+          if (success) {
+            card.remove();
+          }
+
+          console.log(message);
+        })
+        .catch((e) => console.error(e));
+    }
+  }
+
+  event.stopPropagation();
+};
+
+let timeotId = null;
+
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.trim();
+
+  if (timeotId) clearTimeout(timeotId);
+
+  timeotId = setTimeout(() => {
+    currentSearchQuery = value;
+    loadProjects(value);
+  }, 400);
+});
+
+projectsListContainer.addEventListener("click", deleteCardFromDOM);
+
+async function init() {
+  await loadProjects().then((data) => {
+    projects = [...data];
+  });
 }
 
 init();

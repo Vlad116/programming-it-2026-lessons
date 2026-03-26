@@ -98,7 +98,7 @@ const projectsDB = [
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const MIN_SEARCH_LENGTH = 3;
+export const MIN_SEARCH_LENGTH = 3;
 
 export const fakeProjectsApi = {
   async getProjects({
@@ -111,7 +111,8 @@ export const fakeProjectsApi = {
 
     let filtered = [...projectsDB];
 
-    if (search.trim() && search >= MIN_SEARCH_LENGTH) {
+    // фильтрация по поиску
+    if (!!search && search.length >= MIN_SEARCH_LENGTH) {
       const searchQuery = search.toLowerCase().trim();
 
       filtered = filtered.filter(
@@ -123,6 +124,43 @@ export const fakeProjectsApi = {
 
     return {
       projects: filtered,
+    };
+  },
+
+  async addProject(projectData) {
+    const newProject = {
+      id: projectsDB.length + 1,
+      title: projectData.title,
+      description: projectData.description || "",
+      image: projectData.image,
+      category: projectData.category || "Other",
+      year: projectData.year || new Date().getFullYear(),
+      tags: Array.isArray(projectData.tags) ? projectData.tags : [],
+    };
+
+    projectsDB.push(newProject);
+    // projectsDB.unshift(newProject); - если бы хотели добавлять в начало списка
+
+    return {
+      success: true,
+      message: "Проект успешно добавлен",
+      project: newProject,
+    };
+  },
+
+  async deleteProject(id) {
+    const index = projectsDB.findIndex((project) => String(project.id) === id);
+
+    if (index === -1) {
+      throw new Error(`Проект с id ${id} не найден`);
+    }
+
+    const deletedProject = projectsDB.splice(index, 1)[0];
+
+    return {
+      success: true,
+      message: `Проект "${deletedProject.title}" успешно удалён`,
+      deletedId: id,
     };
   },
 };
