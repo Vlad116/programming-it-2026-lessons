@@ -1,0 +1,18 @@
+{
+  "name": "portfolio-ts-version",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "pug": "^3.0.4",
+    "sass": "^1.99.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.4",
+    "vite-plugin-pug": "^0.4.1"
+  }
+}
