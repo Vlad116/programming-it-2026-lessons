@@ -1,13 +1,150 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio-ts-version</title>
-    <link rel="stylesheet" href="./src/style.scss" />
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мое портфолио</title>
+    <link rel="preconnect" href="./fonts/RobotoMono-Regular.ttf" />
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="sendForm.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="navigation">
+            <ul class="navigation_menu">
+                <li class="navigation_item"><a class="navigation_link" id="#mainInfo">О Себе</a></li>
+                <li class="navigation_item"><a class="navigation_link" href="#skills">Навыки</a></li>
+                <li class="navigation_item"><a class="navigation_link" href="#hobbies">Хобби</a></li>
+                <li class="navigation_item"><a class="navigation_link" href="#projects">Проекты</a></li>
+            </ul>
+        </nav>
+        <div class="header_body">
+            <h1 class="header_title">Мое портфолио</h1>
+            <p class="header_description">Это страница с моим портфолио</p>
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn">Переключение темы ☀️/🌙</button>
+    </header>
+
+    <main class="grid-container">
+        <section id="mainInfo" class="main-info">
+            <div class="avatar-wrapper">
+                <img class="profile-photo" src="https://avatars.githubusercontent.com/u/32329117?v=4&size=256" alt="Фото Алексеев Владислав">
+            </div>
+            <div class="main-info_description">
+                <h2 class="section-header">О себе</h2>
+                <p>Меня зовут Владислав, я <span class="bold">frontend-разработчик</span>, мои контакты можете посмотреть <a class="contactLink" href="#my-contacts">тут</a>.</p>
+                <p>В <span class="underline bold">свободное</span> время читаю <span class="italic">техническую</span> литературу</p>
+                <p>Моя любимая цитата: <em><span class="markedText">То, что мы не оправдали ваши ожидания — это не наши проблемы. Это ваши проблемы.</span> - <small>Аршавин</small></em></p>
+            </div>
+        </section>
+        <section id="hobbies" class="hobbies grid-card">
+                <h3 class="section-header">Мои хобби:</h3>
+                <ul>
+                    <li>Горные лыжи</li>
+                    <li>Баскетбол</li>
+                    <li>Программирование</li>
+                    <li>...</li>
+                </ul>
+        </section>
+        <section class="regards grid-card">
+                <table>
+                    <caption><h4 class="section-header">Мои достижения</h4></caption>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Название достижения</th>
+                            <th>год</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Закончил бакалавриат</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>Выйграл школьную олимпиаду</td>
+                            <td>2012</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </section>
+        <section id="skills" class="skills grid-card">
+                <h2 class="section-header">Навыки:</h2>
+                
+                <div class="skills-list">
+                    <div class="skills-list_item">HTML5</div>
+                    <div class="skills-list_item">CSS3</div>
+                    <div class="skills-list_item">Flexbox</div>
+                    <div class="skills-list_item">Grid</div>
+                    <div class="skills-list_item">JavaScript</div>
+                    <div class="skills-list_item">Git</div>         
+                </div>
+        </section>
+        <section id="projects" class="projects">
+            <h3 class="section-header">Мои проекты:</h3>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Поиск по проектам" class="search-input">
+            </div>
+            <div class="gallery" id="projects-list">
+                <!-- Карточки проектов приходящие с "сервера" -->
+            </div>
+            <div id="loader" class="loader-container">Загрузка проектов <span class="loader"></span></div>
+            <!-- <button id="add-card" class="add-btn">➕ Добавить новую карточку</button> -->
+        </section>
+        <!-- <section class="gallery-section">
+            <h2 class="section-header">Галерея</h2>
+            <div class="gallery" id="gallery">
+                Сами карточки буду генерироваться в js
+            </div>
+            <div class="stats">
+                Лайков всего: <span id="likes-counter">0</span>
+            </div>
+            <button id="add-card" class="add-btn">➕ Добавить новую карточку</button>
+        </section> -->
+        <section class="contacts-form">
+            <h2 class="section-header">Связаться со мной</h2>
+            <form id="contact-form" class="contact-form">
+                <fieldset class="contact-form_fieldset">
+                    <div class="field">
+                        <label for="name">Как к вам обращаться?</label>
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" autocomplete="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="name">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="example@mail.com" 
+                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Телефон:</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="">
+                    </div>
+                    <div class="field">
+                        <label for="message">Сообщение:</label>
+                        <textarea type="text" id="message" name="message" rows="6" placeholder="" required ></textarea>
+                    </div>
+                    <button type="submit">Отправить</button>
+                </fieldset>
+                <div class="contact-form_sending-result hidden"></div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <section id="my-contacts" class="contacts">
+            <h3 class="section-header">Контакты:</h3>
+            <div class="section-content">
+                <ol>
+                    <li>
+                        <a href="mailto:ivanov-ivan@example.com">ivanov-ivan@example.com</a>
+                    </li>
+                    <li>
+                        <a href="tel:+79171234323">+7 (917) 123-43-23</a>
+                    </li>
+                </ol>
+                <p>&copy; 2026 Владислав Алексеев. Все права защищены.</p>
+            </div>
+        </section>
+    </footer>
+    <script src="./fakeApi.js" type="module"></script>
+    <script src="./asyncProjectsList.js" type="module"></script>
+    <script src="./theme.js" type="module"></script>
+</body>
 </html>

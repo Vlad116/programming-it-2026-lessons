@@ -1,0 +1,51 @@
+@use '../../styles/mixins.scss' as *;
+
+.header {
+    padding-block: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 16px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: map.get($colors, bg-light);
+    gap: 8px;
+
+    .header_title {
+        font-size: 28px;
+        margin-block: 8px;
+    }
+
+    .header_description {
+        margin-block: 8px;
+    }
+
+    .navigation_menu {
+        display: flex;
+        justify-content: start;
+        gap: 16px;
+        padding-inline: 16px;
+        width: 100%;
+
+        .navigation_item {
+            padding-bottom: 8px;
+            border-bottom: map.get($colors, border);
+
+            .navigation_link {
+                color: map.get($colors, primary);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }   
+        }
+    }
+
+    button.theme-toggle-btn {
+        @include baseButton(map.get($colors, bg-light), 'white', 10px, 16px)
+    }
+}

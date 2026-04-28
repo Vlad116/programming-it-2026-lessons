@@ -1,0 +1,19 @@
+@mixin baseflexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin baseButton($bg-color, $textColor, $paddingBlock, $paddingInline) {
+    padding-block: $paddingBlock;
+    padding-inline: $paddingInline;
+    background: $bg-color;
+    color: $textColor;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: $transition;
+    
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
