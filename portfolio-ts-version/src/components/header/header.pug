@@ -1,0 +1,10 @@
+header.header
+  nav.navigation
+    ul.navigation_menu
+      each item in navigationLinks
+        li.navigation_item
+          a.navigation_link(href=item.href)= item.text
+  div.header_body
+    h1.header_title Мое портфолио
+    p.header_description Это страница с моим портфолио
+  button#theme-toggle.theme-toggle-btn Переключение темы ☀️/🌙

@@ -1,0 +1,15 @@
+$corors: (
+    primary: rgb(68, 68, 206),
+    accent: rgba(68, 68, 206, 0.9),
+    accent-hover: rgba(51, 51, 192, 0.9),
+    border: #484848,
+    bg-light: rgb(190, 219, 234),
+    bg-dark: rgb(64, 74, 80),
+    text-muted: rgb(119, 116, 116),
+    success: rgb(100, 222, 108),
+    danger: rgb(231, 94, 94)
+);
+
+$font-mono: 'RobotoMono-Regular', sans-serif;
+$defaultBorderRadius: 8px;
+$transition: all 0.3s ease;
