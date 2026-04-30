@@ -1,5 +1,6 @@
 import { error } from "console";
 import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../constants.js";
 
 export const requireAuth = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -12,10 +13,12 @@ export const requireAuth = (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, JWT_SECRET);
+
     req.user = payload;
 
     next();
   } catch (err) {
-    return res.status(401).json({ error: "Токен недействител или истек" });
+    console.error(err);
+    return res.status(401).json({ error: "Токен недействителен или истек" });
   }
 };

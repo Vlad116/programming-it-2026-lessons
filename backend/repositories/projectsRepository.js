@@ -1,5 +1,5 @@
 import { DatabaseSync } from "node:sqlite";
-import { DB_FILE_PATH } from "./constants.js";
+import { DB_FILE_PATH } from "../constants.js";
 
 const db = new DatabaseSync(DB_FILE_PATH);
 
@@ -26,37 +26,7 @@ db.exec(`
     );
 
     CREATE INDEX IF NOT EXISTS idx_tags_project ON tags(project_id);
-
-    CREATE TABLE IF NOT EXISTS users (
-      id         INTEGER PRIMARY KEY AUTOINCREMENT,
-      email      TEXT NOT NULL UNIQUE,
-      password   TEXT NOT NULL,
-      created_at TEXT NOT NULL DEFAULT (datetime('now'))
-    );
 `);
-
-export function createUser(email, password) {
-  db.exec("BEGIN");
-
-  try {
-    const stmt = db.prepare(
-      "INSERT INTO users (email, password) VALUES (?, ?)",
-    );
-    const { lastInsertRowid } = stmt.run(email, password);
-    db.exec("COMMIT");
-
-    return db
-      .prepare("SELECT id, email, created_at FROM users WHERE id = ?")
-      .get(lastInsertRowid);
-  } catch (err) {
-    db.exec("ROLLBACK");
-    throw err;
-  }
-}
-
-export function findUserByEmail(email) {
-  return db.prepare("SELECT * FROM users WHERE email = ?").get(email);
-}
 
 // Helpers
 /* Достаем теги для конкретного проекта и прикрепляем к объекту */
@@ -76,7 +46,7 @@ const insertTag = db.prepare(
 const deleteTags = db.prepare("DELETE FROM tags WHERE project_id = ?");
 
 // QUERIES
-export function getProjects({
+export function findProjects({
   search = "",
   category = "all",
   page = 1,
@@ -113,12 +83,12 @@ export function getProjects({
   };
 }
 
-export function getProjectById(id) {
+export function findProjectById(id) {
   const project = db.prepare("SELECT * FROM projects WHERE id = ?").get(id);
   return project ? attachTags(project) : null;
 }
 
-export const createProject = (data) => {
+export const saveProject = (data) => {
   const {
     title,
     description = "",
@@ -153,15 +123,15 @@ export const createProject = (data) => {
     }
 
     db.exec("COMMIT");
-    return getProjectById(projectId);
+    return findProjectById(projectId);
   } catch (e) {
     db.exec("ROLLBACK");
     throw e;
   }
 };
 
-export const updateProject = (id, data) => {
-  const existing = getProjectById(id);
+export const upsertProject = (id, data) => {
+  const existing = findProjectById(id);
 
   if (!existing) return null;
 
@@ -199,15 +169,15 @@ export const updateProject = (id, data) => {
 
     db.exec("COMMIT");
 
-    return getProjectById(id);
+    return findProjectById(id);
   } catch (err) {
     db.exec("ROLLBACK");
     throw err;
   }
 };
 
-export const deleteProject = (id, data) => {
-  const project = getProjectById(id);
+export const removeProject = (id, data) => {
+  const project = findProjectById(id);
 
   if (!project) return null;
 
