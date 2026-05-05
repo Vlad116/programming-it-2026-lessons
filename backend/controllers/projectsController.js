@@ -7,6 +7,15 @@ import {
   removeProject,
 } from "../repositories/index.js";
 
+const CATEGORIES = [
+  "E-commerce",
+  "Dashboard",
+  "Social",
+  "Productivity",
+  "Landing",
+  "Other",
+];
+
 export const getProjects = async (req, res) => {
   const { search = "", page = "1", limit = "10", category = "all" } = req.query;
 
@@ -20,8 +29,19 @@ export const getProjects = async (req, res) => {
     limit: limitNum,
   });
 
-  res.set("X-Total-Count", String(data.total));
-  res.json(data);
+  // res.set("X-Total-Count", String(data.total));
+  // res.json(data);
+  res.render("projects/index", {
+    title: "Проекты",
+    projects: data.projects,
+    total: data.total,
+    totalPages: Math.ceil(data.total / limit),
+    page: pageNum,
+    search,
+    category,
+    categories: CATEGORIES,
+    user: req.user ?? null,
+  });
 };
 
 export const getProjectById = async (req, res) => {

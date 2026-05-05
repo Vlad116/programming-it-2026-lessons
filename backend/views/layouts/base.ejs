@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> | Мое портфолио</title>
+    <link rel="preconnect" href="/fonts/RobotoMono-Regular.ttf" />
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navigation">
+            <ul class="navigation_menu">
+                <li class="navigation_item"><a class="navigation_link" id="/projects">Проекты</a></li>
+                <li class="navigation_item"><a class="navigation_link" href="/login">Вход</a></li>
+                <li class="navigation_item"><a class="navigation_link" href="/registration">Регистрация</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle-btn">Переключение темы ☀️/🌙</button>
+    </header>
+    <main class="grid-container">
+        <% body %> <%# место встраивания контента страницы %>
+    </main>
+    <footer>
+        <section id="my-contacts" class="contacts">
+            <h3 class="section-header">Контакты:</h3>
+            <div class="section-content">
+                <ol>
+                    <li>
+                        <a href="mailto:ivanov-ivan@example.com">ivanov-ivan@example.com</a>
+                    </li>
+                    <li>
+                        <a href="tel:+79171234323">+7 (917) 123-43-23</a>
+                    </li>
+                </ol>
+                <p>&copy; 2026 Владислав Алексеев. Все права защищены.</p>
+            </div>
+        </section>
+    </footer>
+    <script src="/scripts/theme.js" type="module"></script>
+</body>

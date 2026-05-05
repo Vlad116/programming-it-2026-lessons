@@ -1,0 +1,51 @@
+<h1 class="page-title">Проекты</h1>
+
+<form class="search-form" method="GET" action="/projects">
+    <input type="text" id="search-input" placeholder="Поиск по проектам" value="<%= search %>" class="search-input">
+    <select name="category" class="search-form__select">
+        <% categories.forEach(cat => { %>
+            <option value="<%= cat %>" <%= category === cat ? 'selected' : '' %>>
+                <%= cat %>
+            </option>
+        <% }) %>
+    </select>
+    <button type="submit" class="submit-search">Найти</button>
+</form>
+
+<div class="projects-grid">
+    <% if (projects.length === 0) { %>
+        <p class="empty">Проекты не найдены</p>
+    <% } %>
+
+    <% projects.forEach(project => { %>
+    <div class="card">
+        <img src="<%= project.image %>" alt="<%= project.title %>" class="card__image">
+        <div class="card__body">
+            <span class="card__category"><%= project.category %></span>
+            <h2 class="card__title">
+                    <a href="/projects/<%= project.id %>"><%= project.title %></a>
+            </h2>
+            <p class="card__description"><%= project.description %></p>
+            <div class="card__tags">
+                <% project.tags.forEach(tag => { %>
+                    <span class="tag"><%= tag %></span>
+                <% }) %>
+            </div>
+            <div class="card__footer">
+            <span class="card__year"><%= project.year %></span>
+                <a href="/projects/<%= project.id %>" class="btn btn--sm">Подробнее</a>
+            </div>
+        </div>
+    </div>
+  <% }) %>
+</div>
+
+<div class="pagination">
+    <% if (page > 1) { %>
+        <a href="/projects?page=<%= page - 1 %>&seacrh=<% search %>&category=<% category %>" class="pagination-btn">←</a>
+    <% } %>
+    <span>Страница <%= page %> из <%= totalPages %></span>
+    <% if (page < totalPages) { %>
+        <a href="/projects?page=<%= page + 1 %>&seacrh=<% search %>&category=<% category %>" class="pagination-btn">→</a>
+    <% } %>
+</div>
